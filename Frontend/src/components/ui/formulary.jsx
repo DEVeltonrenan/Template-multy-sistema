@@ -39,6 +39,7 @@ export default function MeuComponente({ }) {
                   type="password"
                   onChange={(e) => console.log('serverPassword', e.target.value)}
                   placeholder="@Rav#0.24" 
+                  disabled
                 />
               </div>
             </div>
@@ -211,6 +212,7 @@ export default function MeuComponente({ }) {
             managerEmail: '',
             gender: '',
             serverLogin: '',
+            serverPassword: '',
             nbsLogin: '',
             nbsPassword: '',
             holmesLogin: '',
@@ -221,7 +223,7 @@ export default function MeuComponente({ }) {
           Limpar
         </Button>
         <Button type="submit">
-          Cadastrar Usuário
+          Enviar E-mails
         </Button>
       </div>
     </form>
