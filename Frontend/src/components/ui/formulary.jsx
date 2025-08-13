@@ -1,18 +1,50 @@
  
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
-import { Label } from "./ui/label"
-import { Input } from "./ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-import { Button } from "./ui/button"
-import { Separator } from "./ui/separator"
+import { Card, CardContent, CardHeader, CardTitle } from "./card"
+import { Label } from "./label"
+import { Input } from "./input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select"
+import { Button } from "./button"
+import { Separator } from "./separator"
 
-export default function MeuComponente({ titulo, descricao }) {
+
+export default function MeuComponente({ }) {
   // Aqui você pode adicionar hooks ou funções
   // Ex: const [state, setState] = useState('');
 
   return (
       <form  className="space-y-6">
+        {/*Servidor Logon*/}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+              Servidor Logon
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="serverLogin">Usuário de login do servidor</Label>
+                <Input
+                  id="serverLogin"
+                  onChange={(e) => console.log('serverLogin', e.target.value)}
+                  placeholder="nome.sobrenome"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="serverPassword">Senha do servidor</Label>
+                <Input
+                  id="serverPassword"
+                  type="password"
+                  onChange={(e) => console.log('serverPassword', e.target.value)}
+                  placeholder="@Rav#0.24" 
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card> 
+
       {/* Sistema NBS */}
       <Card>
         <CardHeader>
@@ -24,7 +56,7 @@ export default function MeuComponente({ titulo, descricao }) {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="firstName">Primeiro nome do contribuinte *</Label>
+              <Label htmlFor="firstName">Primeiro nome</Label>
               <Input
                 id="firstName"
               
@@ -34,8 +66,9 @@ export default function MeuComponente({ titulo, descricao }) {
               />
             </div>
             
+
             <div className="space-y-2">
-              <Label htmlFor="gender">Sexo *</Label>
+              <Label htmlFor="gender">Sexo </Label>
               <Select onValueChange={(value) => console.log('gender', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Selecione o sexo" />
@@ -50,7 +83,7 @@ export default function MeuComponente({ titulo, descricao }) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="employeeEmail">E-mail do colaborador *</Label>
+              <Label htmlFor="employeeEmail">E-mail do colaborador </Label>
               <Input
                 id="employeeEmail"
                 type="email"
@@ -108,8 +141,9 @@ export default function MeuComponente({ titulo, descricao }) {
               placeholder="Senha inicial do sistema NBS"
             />
           </div>
-        </CardContent>
+      </CardContent>
       </Card>
+      
 
       <Separator />
 
@@ -193,3 +227,4 @@ export default function MeuComponente({ titulo, descricao }) {
     </form>
   );
 }
+
