@@ -106,22 +106,7 @@ export default function MeuComponente({ }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="serverLogin">
-                Usuário de login do servidor
-                <span className="text-sm text-muted-foreground ml-2">(formato: nome.sobrenome)</span>
-              </Label>
-              <div className="flex gap-2">
-                <Input
-                  id="serverLogin"
-                  onChange={(e) => console.log('serverLogin', e.target.value)}
-                  placeholder="nome.sobrenome"
-                />
-                <Button type="button" variant="outline">
-                  Gerar
-                </Button>
-              </div>
-            </div>
+          
             
             <div className="space-y-2">
               <Label htmlFor="nbsLogin">Login NBS</Label>
