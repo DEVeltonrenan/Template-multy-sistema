@@ -1,12 +1,18 @@
  
 import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Label } from "./ui/label"
+import { Input } from "./ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
+import { Button } from "./ui/button"
+import { Separator } from "./ui/separator"
 
 export default function MeuComponente({ titulo, descricao }) {
   // Aqui você pode adicionar hooks ou funções
   // Ex: const [state, setState] = useState('');
 
   return (
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form  className="space-y-6">
       {/* Sistema NBS */}
       <Card>
         <CardHeader>
@@ -21,8 +27,8 @@ export default function MeuComponente({ titulo, descricao }) {
               <Label htmlFor="firstName">Primeiro nome do contribuinte *</Label>
               <Input
                 id="firstName"
-                value={formData.firstName}
-                onChange={(e) => handleInputChange('firstName', e.target.value)}
+              
+                onChange={(e) => console.log('firstName', e.target.value)}
                 placeholder="Digite o primeiro nome"
                 required
               />
@@ -30,7 +36,7 @@ export default function MeuComponente({ titulo, descricao }) {
             
             <div className="space-y-2">
               <Label htmlFor="gender">Sexo *</Label>
-              <Select onValueChange={(value) => handleInputChange('gender', value)}>
+              <Select onValueChange={(value) => console.log('gender', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Selecione o sexo" />
                 </SelectTrigger>
@@ -48,8 +54,7 @@ export default function MeuComponente({ titulo, descricao }) {
               <Input
                 id="employeeEmail"
                 type="email"
-                value={formData.employeeEmail}
-                onChange={(e) => handleInputChange('employeeEmail', e.target.value)}
+                onChange={(e) => console.log('employeeEmail', e.target.value)}
                 placeholder="colaborador@empresa.com"
                 required
               />
@@ -60,8 +65,7 @@ export default function MeuComponente({ titulo, descricao }) {
               <Input
                 id="managerEmail"
                 type="email"
-                value={formData.managerEmail}
-                onChange={(e) => handleInputChange('managerEmail', e.target.value)}
+                onChange={(e) => console.log('managerEmail', e.target.value)}
                 placeholder="gestor@empresa.com"
               />
             </div>
@@ -76,11 +80,10 @@ export default function MeuComponente({ titulo, descricao }) {
               <div className="flex gap-2">
                 <Input
                   id="serverLogin"
-                  value={formData.serverLogin}
-                  onChange={(e) => handleInputChange('serverLogin', e.target.value)}
+                  onChange={(e) => console.log('serverLogin', e.target.value)}
                   placeholder="nome.sobrenome"
                 />
-                <Button type="button" variant="outline" onClick={generateServerLogin}>
+                <Button type="button" variant="outline">
                   Gerar
                 </Button>
               </div>
@@ -90,8 +93,7 @@ export default function MeuComponente({ titulo, descricao }) {
               <Label htmlFor="nbsLogin">Login NBS</Label>
               <Input
                 id="nbsLogin"
-                value={formData.nbsLogin}
-                onChange={(e) => handleInputChange('nbsLogin', e.target.value)}
+                onChange={(e) => console.log('nbsLogin', e.target.value)}
                 placeholder="Login para o sistema NBS"
               />
             </div>
@@ -102,8 +104,7 @@ export default function MeuComponente({ titulo, descricao }) {
             <Input
               id="nbsPassword"
               type="password"
-              value={formData.nbsPassword}
-              onChange={(e) => handleInputChange('nbsPassword', e.target.value)}
+              onChange={(e) => console.log('nbsPassword', e.target.value)}
               placeholder="Senha inicial do sistema NBS"
             />
           </div>
@@ -126,8 +127,7 @@ export default function MeuComponente({ titulo, descricao }) {
             <Input
               id="holmesLogin"
               type="email"
-              value={formData.holmesLogin}
-              onChange={(e) => handleInputChange('holmesLogin', e.target.value)}
+              onChange={(e) => console.log('holmesLogin', e.target.value)}
               placeholder="usuario@empresa.com"
             />
           </div>
@@ -149,8 +149,7 @@ export default function MeuComponente({ titulo, descricao }) {
             <Label htmlFor="intranetLogin">Login (e-mail corporativo ou CPF)</Label>
             <Input
               id="intranetLogin"
-              value={formData.intranetLogin}
-              onChange={(e) => handleInputChange('intranetLogin', e.target.value)}
+              onChange={(e) => console.log('intranetLogin', e.target.value)}
               placeholder="usuario@empresa.com ou 000.000.000-00"
             />
           </div>
@@ -160,8 +159,7 @@ export default function MeuComponente({ titulo, descricao }) {
             <Input
               id="intranetPassword"
               type="password"
-              value={formData.intranetPassword}
-              onChange={(e) => handleInputChange('intranetPassword', e.target.value)}
+              onChange={(e) => console.log('intranetPassword', e.target.value)}
               placeholder="raviera2025"
               disabled
               className="bg-muted"
@@ -173,7 +171,7 @@ export default function MeuComponente({ titulo, descricao }) {
 
       <div className="flex justify-end gap-4">
         <Button type="button" variant="outline" onClick={() => {
-          setFormData({
+          console.log({
             firstName: '',
             employeeEmail: '',
             managerEmail: '',
