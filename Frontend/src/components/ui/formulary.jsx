@@ -97,7 +97,7 @@ export default function MeuComponente() {
             fontWeight: "bold"
           }}
         >
-          Formulário enviado com sucesso!
+          TUNICO E TINOCO É PICAAAAAAAAAAAAAAAAAA!
         </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-6">
