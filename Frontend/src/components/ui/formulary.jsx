@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Button } from "./button"
 import { Separator } from "./separator"
 import { useState, useEffect} from "react";
-
+import { createUser } from "../../services/api";
 
 export default function MeuComponente() {
   const [formValues, setFormValues] = useState({
@@ -48,6 +48,7 @@ export default function MeuComponente() {
     if (validate()) {
       setIsSubmitted(true);
     }
+    createUser(formValues);
   };
 
   // Efeito para lidar com o envio bem-sucedido do formulário
