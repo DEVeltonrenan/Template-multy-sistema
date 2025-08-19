@@ -1,26 +1,29 @@
 import smtplib
 from email.mime.text import MIMEText
-# from email.mime.multipart import MIMEMultipart
+from email.mime.multipart import MIMEMultipart
 
 class EmailAdapter:
-    def __init__(self, email: str):
+    def __init__(self, email: str, password: str):
         self.email = email
+        self.password = password
 
-    def send_email(self, subject: str, body: str):
-        sender_email = "renandrunline@gmail.com"
-        sender_password = "odyj pzcw nmvb kpid"  # Use an app password or environment variable for security
-        recipient_email = self.email
+    def send_email(self, recipient_email: str, subject: str, body: str):
+        try:
+            html_message = MIMEMultipart("alternative")
+            html_message["Subject"] = subject
+            html_message["From"] = self.email
+            html_message["To"] = recipient_email
 
-        html_message = MIMEText(body, 'html')
-        html_message['Subject'] = subject
-        html_message['From'] = sender_email
-        html_message['To'] = recipient_email
+            # Corpo em HTML
+            html_part = MIMEText(body, "html")
+            html_message.attach(html_part)
 
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-            server.login(sender_email, sender_password)
-            server.sendmail(sender_email, recipient_email, html_message.as_string())
+            # Conexão com servidor Gmail
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+                server.login(self.email, self.password)
+                server.sendmail(self.email, recipient_email, html_message.as_string())
 
-    # def send_email_with_attachment(self, subject: str, body: str, attachment: str):
-    #     print(f"Sending email to {self.email} with subject {subject} and body {body} and attachment {attachment}")
-
-
+            return True
+        except Exception as e:
+            print("Erro ao enviar email:", e)
+            return False

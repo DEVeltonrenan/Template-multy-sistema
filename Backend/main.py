@@ -15,6 +15,7 @@ def send_email():
         recipient_email="renandrunline02@gmail.com",
         subject="Teste de envio",
         body="<h1>Olá!</h1><p>Email enviado via FastAPI + Python 🚀</p>"
+
+        
     )
     return {"status": "enviado" if sucesso else "erro"}
-    
