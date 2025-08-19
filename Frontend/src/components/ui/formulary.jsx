@@ -215,7 +215,7 @@ export default function MeuComponente() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="nbsPassword">Primeira senha fixa</Label>
+              <Label htmlFor="nbsPassword">Primeira senha</Label>
               <Input
                 id="nbsPassword"
                 type="text"
