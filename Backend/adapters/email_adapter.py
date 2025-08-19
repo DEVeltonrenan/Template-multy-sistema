@@ -27,3 +27,5 @@ class EmailAdapter:
         except Exception as e:
             print("Erro ao enviar email:", e)
             return False
+
+            
