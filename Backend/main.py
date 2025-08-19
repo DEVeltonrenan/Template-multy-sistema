@@ -2,18 +2,17 @@ from typing import Union
 
 from fastapi import FastAPI
 from adapters.email_adapter import EmailAdapter
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    email_adapter = EmailAdapter("teste@teste.com")
-    email_adapter.send_email("Teste", "Teste")
-    email_adapter.send_email_with_attachment("Teste", "Teste", "teste.txt")
-    return {"Hello": "violeiro solitario"}
-
-
+app = FastAPI(port=8000, host="0.0.0.0", reload=True)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.post("/users")
-def create_user():
-    return {"user": "teste"}
-    
+def create_user(userData: dict):
+    print(userData)
+    return {"user": userData}
