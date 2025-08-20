@@ -3,16 +3,17 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 class EmailAdapter:
-    def __init__(self, email: str, password: str):
-        self.email = email
-        self.password = password
+    def __init__(self):
+        self.email = "renandrunline@gmail.com"
+        self.password = "bcgt ueet wgag klea"
 
-    def send_email(self, recipient_email: str, subject: str, body: str):
+    def send_email(self, menager_email: str, recipient_email: str, subject: str, body: str):
         try:
             html_message = MIMEMultipart("alternative")
             html_message["Subject"] = subject
             html_message["From"] = self.email
             html_message["To"] = recipient_email
+            html_message["Cc"] = menager_email
 
             # Corpo em HTML
             html_part = MIMEText(body, "html")

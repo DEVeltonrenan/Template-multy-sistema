@@ -4,21 +4,23 @@ from adapters.email_adapter import EmailAdapter
 
 app = FastAPI()
 
-# Modelo de entrada (JSON)
+# Modelo de entrada (JSON) corpo da requisição
 class EmailRequest(BaseModel):
     recipient_email: str
+    menager_email: str
     subject: str
     body: str
 
 @app.post("/send-email")
 def send_email(request: EmailRequest):
-    email = EmailAdapter("renandrinline@gmail.com", "odvj pzcv nmvb kpid")
+    email = EmailAdapter()
 
     sucesso = email.send_email(
         recipient_email=request.recipient_email,
+        menager_email=request.menager_email,
         subject=request.subject,
         body=request.body
     )
 
     return {"status": "enviado" if sucesso else "erro"}
-# Executar o servidor com: uvicorn main:app --reload aaaaaaaaaaaaaaaaaaaaaaaa!mai
+# Executar o servidor com: uvicorn main:app --reload aaaaaaaaaaaaaaaaaaaaaaaa
