@@ -22,7 +22,7 @@ class EmailAdapter:
             # Conexão com servidor Gmail
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
                 server.login(self.email, self.password)
-                server.sendmail(self.email, recipient_email, html_message.as_string())
+                server.sendmail(self.email,[menager_email, recipient_email], html_message.as_string())
 
             return True
         except Exception as e:
